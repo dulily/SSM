@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.duli.mapper.NewsMapper" >
+
+    <resultMap id="newsWithCategory" type="News">
+        <id property="id" column="nid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createtime" column="createtime"/>
+        <result property="pictureUrl" column="picture_url"/>
+        <result property="author" column="author"/>
+        <result property="categoryid" column="categoryid"/>
+        <result property="username" column="username"/>
+        <association property="category" javaType="Category">
+            <id property="id" column="cid"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+
+    <select id="queryAll" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+        </where>
+        order by t1.createtime desc
+    </select>
+
+    <select id="deleteOne" resultType="News">
+        delete from news where id=#{id}
+    </select>
+
+    <select id="queryLikeByTitle" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+          <if test="title!='' and title!=null">
+            and title like concat('%',#{title},'%')
+          </if>
+          and t1.categoryid = t2.id
+        </where>
+    </select>
+
+    <select id="insertOne" resultType="News">
+      insert into news
+      (title,categoryid,author,content,picture_url,createtime,username)
+      values
+      (#{title},#{categoryid},#{author},#{content},#{pictureUrl},#{createtime},#{username})
+    </select>
+
+    <select id="selectById" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,t1.categoryid,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+            and t1.id=#{id}
+        </where>
+    </select>
+
+
+    <select id="updateOne" resultType="News">
+        update news
+        <set>
+            <if test="title!=null and title!=''">
+                title=#{title},
+            </if>
+            <if test="categoryid!=null and categoryid!=''">
+                categoryid=#{categoryid},
+            </if>
+            <if test="author!=null and author!=''">
+              author=#{author},
+            </if>
+            <if test="content!=null and content!=''">
+                content=#{content},
+            </if>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="pictureUrl!=null and pictureUrl!=''">
+                picture_url=#{pictureUrl},
+            </if>
+            <if test="createtime!=null">
+                createtime=#{createtime}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </select>
+
+    <select id="batchDelete">
+        delete from news where id in
+        <foreach collection="list" open="(" close=")" separator="," item="item" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>

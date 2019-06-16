@@ -1,0 +1,10 @@
+/*前台主页样式*/
+.content-left{
+    width: 40%;
+    float:left;
+    background-color: #fff;
+}
+.content-right{
+    width:60%;
+    float:left;
+}
