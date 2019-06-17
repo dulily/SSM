@@ -50,4 +50,23 @@ public interface NewsService {
      * @param id
      */
     void batchDelete(List<Integer> id);
+
+
+    /**
+     * 前台部分
+     */
+
+
+    /**
+     * 查询最新发布的前7条新闻
+     * @return
+     */
+
+    List<News> queryLimit();
+
+    /**
+     * 查询国际新闻
+     * @return
+     */
+    List<News> queryCategoryName();
 }

@@ -7,6 +7,9 @@ import java.util.List;
 
 public interface NewsMapper {
 
+    /**
+     * 后台部分
+     */
     //显示所有新闻列表
     List<News> queryAll();
 
@@ -27,5 +30,14 @@ public interface NewsMapper {
 
     //批量删除
     void batchDelete(List<Integer> id);
+
+    /**
+     * 前台部分
+     */
+    //查询最新发布的前7条新闻
+    List<News> queryLimit();
+
+    //查询国际新闻
+    List<News> queryCategoryName();
 
 }

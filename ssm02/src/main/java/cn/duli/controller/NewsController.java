@@ -32,6 +32,9 @@ public class NewsController {
     @Autowired
     private UploadService uploadService;
 
+    /**
+     * 后台部分
+     */
     @RequestMapping("/queryAll")
     public String queryAll(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model){
         //分页查询
@@ -136,5 +139,34 @@ public class NewsController {
         return "删除成功";
     }
 
+    /**
+     * 前台部分
+     */
+    @RequestMapping("/queryLimit")
+    @ResponseBody
+    public List<News> queryLimit(){
+        List<News> list = newsService.queryLimit();
+        System.out.println("正在查询最新发布新闻...");
+        return list;
+    }
+
+//    @RequestMapping("/queryNewsAll")
+//    @ResponseBody
+//    public List<News> queryNewsAll(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model){
+//        //分页查询
+//        PageHelper.startPage(startPage,4);
+//        List<News> news = newsService.queryAll();
+//        PageInfo<News> pi = new PageInfo<News>(news);
+//        model.addAttribute("page",pi);
+//        return news;
+//    }
+
+    @RequestMapping("/queryCategoryName")
+    @ResponseBody
+    public List<News> queryCategoryName(){
+        List<News> list = newsService.queryCategoryName();
+        System.out.println("正在查询类别为国际的新闻...");
+        return list;
+    }
 }
 

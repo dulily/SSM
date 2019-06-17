@@ -101,4 +101,28 @@
         </foreach>
     </select>
 
+
+
+
+    <select id="queryLimit" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+        </where>
+        order by t1.createtime desc limit 7
+    </select>
+
+    <select id="queryCategoryName" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+            and t2.name="国际" limit 7
+        </where>
+    </select>
 </mapper>

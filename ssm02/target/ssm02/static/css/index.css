@@ -1,10 +1,132 @@
 /*前台主页样式*/
+
+/*第一部分*/
 .content-left{
-    width: 40%;
+    width: 30%;
     float:left;
-    background-color: #fff;
+    margin: 0px 5% 0px 0px;
+}
+.lastest{
+    width: 98%;
+    height: 56px;
+    color:#069;
+    padding-top: 10px;
+    border-bottom:2px solid #23262E;
+}
+.dec{
+    color:grey;
+    display: block;
+    font-size:14px;
+}
+.eachLi{
+    padding-bottom: 8px;
 }
 .content-right{
     width:60%;
     float:left;
+}
+/*第二部分*/
+.content-left-two{
+    width: 70%;
+    /*background-color: #ffff00;*/
+    height: 600px;
+    float:left;
+}
+.content-box1{
+    width: 98%;
+    height: 140px;
+    /*background-color: #d43f3a;*/
+    margin-bottom: 5px;
+    border-bottom: 2px solid #23262E;
+}
+.content-box1-img{
+    width: 20%;
+    height: 140px;
+    /*background-color: #d58512;*/
+    text-align:center;
+    float:left;
+}
+.content-box1-text{
+    width: 80%;
+    height: 140px;
+    /*background-color: #a6e1ec;*/
+    float:left;
+}
+.content-box1-text-info{
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.click-count{
+    padding-left:40px;
+}
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+ul.pagination li a:hover {
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+    color: white;
+}
+ul.pagination li a:active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+.content-right-two{
+    width: 30%;
+    /*background-color: #f0ad4e;*/
+    height: auto;
+    margin-top: 15px;
+    float:left;
+}
+.content-right-two-box1{
+    width: 100%;
+    /*background-color: #f0ad4e;*/
+    height: 310px;
+    border:1px solid #c7c7c7;
+    border-top:2px solid #069;
+    margin-bottom: 20px;
+}
+.click-rank{
+    width: 120px;
+    height: 40px;
+    color:#fff;
+    text-align: center;
+    line-height: 40px;
+    background-color: #23262E;
+}
+.content-right-two-text{
+    padding: 10px;
+}
+.content-right-two-text li a{
+    height: 34px;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #c7c7c7;
+}
+.content-right-two-news{
+    padding: 10px;
+}
+.content-right-two-news li a{
+    height: 34px;
+    display: block;
+    padding: 10px 0;
 }

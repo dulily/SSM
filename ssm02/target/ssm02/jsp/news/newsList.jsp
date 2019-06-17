@@ -144,7 +144,7 @@
                                 <div class="div1" style="float: left;width:200px;text-align: center;line-height: 100px;">
                                     <img src="${obj.pictureUrl}" alt="" width="100px" height="60px;">
                                 </div>
-                                <div class="div2" style="float: left;">
+                                <div class="div2" style="float: left;width:980px;">
                                     <p><span style="color:#1E90FF;">标题：</span>${obj.title}</p>
                                     <p><span style="color:#1E90FF;">作者：</span>${obj.author}</p>
                                     <p><span style="color:#1E90FF;">类别：</span>${obj.category.name}</p>

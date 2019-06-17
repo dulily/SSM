@@ -48,5 +48,18 @@ public class NewsServiceImpl implements NewsService {
         newsMapper.batchDelete(id);
     }
 
+    /**
+     * 前台部分
+     */
+    @Override
+    public List<News> queryLimit() {
+        return newsMapper.queryLimit();
+    }
+
+    @Override
+    public List<News> queryCategoryName() {
+        return newsMapper.queryCategoryName();
+    }
+
 
 }
