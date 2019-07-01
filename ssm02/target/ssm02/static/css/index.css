@@ -13,6 +13,11 @@
     padding-top: 10px;
     border-bottom:2px solid #23262E;
 }
+.lastest ul li{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .dec{
     color:grey;
     display: block;
@@ -22,34 +27,34 @@
     padding-bottom: 8px;
 }
 .content-right{
-    width:60%;
+    width:65%;
+    margin-top: 30px;
+    height: 280px;
     float:left;
 }
+
 /*第二部分*/
 .content-left-two{
     width: 70%;
-    /*background-color: #ffff00;*/
     height: 600px;
     float:left;
 }
 .content-box1{
     width: 98%;
     height: 140px;
-    /*background-color: #d43f3a;*/
     margin-bottom: 5px;
-    border-bottom: 2px solid #23262E;
 }
 .content-box1-img{
     width: 20%;
     height: 140px;
-    /*background-color: #d58512;*/
     text-align:center;
+    border-bottom: 1px solid #c7c7c7;
     float:left;
 }
 .content-box1-text{
-    width: 80%;
+    width: 78%;
     height: 140px;
-    /*background-color: #a6e1ec;*/
+    border-bottom: 1px solid #c7c7c7;
     float:left;
 }
 .content-box1-text-info{
@@ -62,44 +67,17 @@
 .click-count{
     padding-left:40px;
 }
-ul.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-}
-ul.pagination li a:hover {
-    background-color: #4CAF50;
-    border: 1px solid #4CAF50;
-    color: white;
-}
-ul.pagination li a:active {
-    background-color: #4CAF50;
-    color: white;
-}
 
 
 
 .content-right-two{
     width: 30%;
-    /*background-color: #f0ad4e;*/
     height: auto;
     margin-top: 15px;
     float:left;
 }
 .content-right-two-box1{
     width: 100%;
-    /*background-color: #f0ad4e;*/
     height: 310px;
     border:1px solid #c7c7c7;
     border-top:2px solid #069;
@@ -117,10 +95,14 @@ ul.pagination li a:active {
     padding: 10px;
 }
 .content-right-two-text li a{
+    width: 100%;
     height: 34px;
     display: block;
     padding: 10px 0;
     border-bottom: 1px solid #c7c7c7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .content-right-two-news{
     padding: 10px;
@@ -129,4 +111,17 @@ ul.pagination li a:active {
     height: 34px;
     display: block;
     padding: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.content-foot{
+    width: 100%;
+    height: 50px;
+    background-color: #23262E;
+    text-align: center;
+    line-height: 50px;
+    color:#fff;
+    margin-top: 40px;
 }

@@ -26,8 +26,11 @@ public class CategoryController {
     /**
      * 后台部分
      */
+
+    //插入新闻类别名
     @RequestMapping(value="/insertOne", produces={"text/html;charset=UTF-8;","application/json;"})
     public String insertOne(Model model,Category category){
+        //判断类别名是否唯一
         boolean category1 = categoryService.checkCategory(category.getName());
         System.out.println("正在插入......");
         if (category1){
@@ -39,6 +42,7 @@ public class CategoryController {
         return "/category/addCategory";
     }
 
+    //查询新闻类别列表
     @RequestMapping("/queryAll")
     public String queryAll(Model model){
         List<Category> categories = categoryService.queryAll();
@@ -46,6 +50,7 @@ public class CategoryController {
         return "/category/categoryList";
     }
 
+    //根据Id查询类别:数据回显
     @RequestMapping("/selectOne")
     public String selectOne(Model model,@RequestParam("id") Integer id){
         Category cat = categoryService.selectOne(id);
@@ -53,9 +58,10 @@ public class CategoryController {
         return "/category/updateCategory";
     }
 
+    //修改新闻类别
     @RequestMapping("/updateOne")
     public String updateOne(Model model, Category category){
-        //如果不存在类别名一样的=类别名个数<1
+        //判断除自身外其它类型同名的个数,如果不存在类别名一样的=类别名个数<1
         if (categoryService.checkHasName(category)<1){
             categoryService.updateOne(category);
             System.out.println("正在修改.....");
@@ -66,6 +72,7 @@ public class CategoryController {
         }
     }
 
+    //根据类别id删除新闻类别
     @RequestMapping("/deleteOne")
     public String deleteOne(@RequestParam("id") Integer id){
         categoryService.deleteOne(id);
@@ -73,6 +80,7 @@ public class CategoryController {
         return "redirect:/category/queryAll";
     }
 
+    //批量删除新闻类别
     @RequestMapping(value="/batchDelete", produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String batchDelete(String name){
@@ -88,10 +96,13 @@ public class CategoryController {
     /**
      * 前台部分
      */
+
+    //前台菜单栏查询所有类别
     @RequestMapping("/queryName")
     @ResponseBody
     public List<Category> queryName(){
         List<Category> categories = categoryService.queryAll();
+        System.out.println("类别为："+categories);
         return categories;
     }
 }

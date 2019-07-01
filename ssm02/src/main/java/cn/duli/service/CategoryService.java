@@ -7,7 +7,7 @@ import java.util.List;
 public interface CategoryService {
     /**
      *
-     * 插入类别名
+     * 插入新闻类别名
      * @param category
      * @return
      */
@@ -19,7 +19,7 @@ public interface CategoryService {
      */
     Boolean checkCategory(String name);
     /**
-     * 类别列表
+     * 查询新闻类别列表
      * @return
      */
     List<Category> queryAll();
@@ -46,7 +46,7 @@ public interface CategoryService {
     Integer checkHasName(Category category);
 
     /**
-     * 删除类别名
+     * 根据类别id删除类别名
      * @param id
      * @return
      */

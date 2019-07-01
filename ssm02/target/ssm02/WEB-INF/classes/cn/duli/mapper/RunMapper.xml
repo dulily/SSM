@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.duli.mapper.RunMapper" >
+
+    <select id="loginRun" resultType="run">
+        select * from run
+        where
+          username=#{username}
+          and password=#{password}
+    </select>
+
+    <select id="selectRunInfo" resultType="run">
+        select * from run where username=#{username}
+    </select>
+
+    <select id="updateRunInfo" resultType="run">
+        update run
+        <set>
+            email=#{email},
+            nickname=#{nickname},
+            <if test="picture!=null and picture!=''">
+                picture=#{picture},
+            </if>
+            phone=#{phone}
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </select>
+
+    <select id="selectByPwd" resultType="Run">
+        select password from run
+        where username=#{username}
+    </select>
+
+    <select id="updateRunPwd" resultType="run">
+        update run set password=#{password}
+        where username=#{username}
+    </select>
+</mapper>

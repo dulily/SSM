@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.duli.mapper.CommentMapper" >
+
+    <resultMap id="commentBase" type="Comment">
+        <id property="id" column="cid"/>
+        <result property="newsid" column="newsid"/>
+        <result property="userid" column="userid"/>
+        <result property="content" column="content"/>
+        <result property="createtime" column="createtime"/>
+        <association property="news" javaType="News">
+            <id property="id" column="nid"/>
+            <result property="title" column="title"/>
+            <result property="pictureUrl" column="picture_url"/>
+        </association>
+        <association property="user" javaType="User">
+            <id property="id" column="uid"/>
+            <result property="nickname" column="nickname"/>
+            <result property="username" column="username"/>
+            <result property="picture" column="picture"/>
+        </association>
+    </resultMap>
+
+    <select id="insertComment" resultType="comment">
+        insert into `comment`
+        (newsid,userid,content,createtime)
+        VALUES
+        (#{newsid},#{userid},#{content},#{createtime})
+    </select>
+
+    <select id="selectCommentByNewsId" resultMap="commentBase">
+        select
+            t1.id as nid,t1.title,
+            t2.id as uid,t2.picture,t2.nickname,
+            t3.id as cid,t3.content,t3.createtime
+        from news t1,user t2,comment t3
+        WHERE
+            t1.id = t3.newsid
+            and t2.id = t3.userid
+            and t1.id = #{newsid}
+    </select>
+
+    <select id="selectCommentByUserId" resultMap="commentBase">
+        select
+            t1.id as nid,t1.title,t1.picture_url,
+            t2.id as uid,t2.username,
+            t3.id as cid,t3.content,t3.createtime
+        from news t1,user t2,comment t3
+        WHERE
+            t1.id = t3.newsid
+            and t2.id = t3.userid
+            and t2.id = #{userid}
+    </select>
+
+    <select id="deleteByCommentId" resultType="comment">
+        delete from comment where id=#{id}
+    </select>
+
+    <select id="selectComments" resultMap="commentBase">
+        select
+            t1.id as nid,t1.title,
+            t2.id as uid,t2.nickname,
+            t3.id as cid,t3.content,t3.createtime
+        from news t1,user t2,comment t3
+        WHERE
+            t1.id = t3.newsid
+            and t2.id = t3.userid
+    </select>
+</mapper>

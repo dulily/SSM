@@ -1,0 +1,241 @@
+/* 去除浏览器自带的边距 */
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+/* 设置页面字体大小以及类型 */
+body{
+    font: normal 100% Helvetica,Arial,sans-serif;
+}
+html{
+    font-size: 16px;
+}
+/* 设置主容器大小 */
+.contain{
+    width: 100%;
+    height: auto;
+    margin:0 auto;
+}
+
+/* 内容区域 */
+.content{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    clear: both;
+}
+/* 内容区域左侧 */
+.content-left{
+    width: 18%;
+    height: 588px;
+    margin-top: 30px;
+    background-color: #F5F5F5;
+    float: left;
+    margin-bottom: 60px;
+}
+.content-left-top{
+    width: 100%;
+    height: 264px;
+    padding-top: 20px;
+    text-align: center;
+}
+.content-left-top-img{
+    text-align: center;
+    padding: 20px;
+}
+.content-left-top-img img{
+    border:3px solid rgb(191, 191, 191);
+    border-radius: 50%;
+}
+.content-left-top-account{
+    width: 80%;
+    text-align: left;
+    height: auto;
+    margin:0 auto;
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+/* 账户管理 */
+.content-left-bottom{
+    width: 100%;
+    height: 300px;
+}
+.menu li a:link{
+    display: block;
+    padding-left: 30px;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    color:#000;
+    position: relative;
+    text-decoration: none;
+}
+.menu li a:hover{
+    color:#fff;
+    background-color: #23262E;
+    text-decoration: none;
+}
+.icon-right{
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: grey;
+}
+/* 内容区域右侧 */
+.content-right{
+    width: 80%;
+    margin-top: 30px;
+    height: auto;
+    margin-bottom: 60px;
+    float: right;
+}
+/* 账号绑定区域 */
+.content-right-item{
+    width: 98%;
+    margin-left: 2%;
+    height: 600px;
+    display: none;
+}
+.content-right-item h4{
+    border-bottom:1px solid #D3D3D3;
+    padding: 10px 0px 20px 0px;
+    position: relative;
+}
+.itemBox{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    border-bottom:1px solid #D3D3D3;
+}
+/* 个人信息区域 */
+.userInfo{
+    width: 90%;
+    height: 400px;
+    margin:0 auto;
+}
+.userInfo-box1{
+    width: 10%;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    background-color: rgb(231, 231, 231);
+    float: left;
+}
+.userInfo-box2{
+    width: 90%;
+    padding-left: 20px;
+    margin-top: 16px;
+    height: 60px;
+    float: right;
+    line-height: 60px;
+    border-bottom: 1px solid #D3D3D3;
+}
+/* 表单内容 */
+.content-item {
+    padding: 20px;
+    margin: 60px auto;
+    width: 940px;
+    height: auto;
+}
+.content-foot{
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background-color: #23262E;
+    text-align: center;
+    line-height: 50px;
+    color:#fff;
+    margin-top: 40px;
+}
+/*上传按钮*/
+.inputFileWrapper label{
+    display: block;
+    float: left;
+    position: relative;
+}
+.inputFileWrapper input[type="file"]{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip:rect(0,0,0,0);
+}
+.inputFileWrapper .custorm-style{
+    display: block;
+    width: 380px;
+    height: 50px;
+}
+.inputFileWrapper .custorm-style .left-button{
+    width: 80px;
+    line-height: 40px;
+    background: #009688;
+    color: #fff;
+    display: block;
+    text-align: center;
+    float: left;
+}
+.inputFileWrapper .custorm-style .right-text{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    float: right;
+    padding-left: 10px;
+    border: 1px solid #009688;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*评论管理*/
+.comment-list{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+.comment-list-box{
+    width: 70%;
+    height: 130px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: #c7c7c7 0 0 5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.comment-list-box-img{
+    width: 130px;
+    height: 130px;
+    float:left;
+    text-align: center;
+    line-height:130px;
+}
+.comment-list-box-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border:1px solid #c7c7c7;
+}
+.comment-list-box-text{
+    width: 505px;
+    padding: 10px;
+    height: 130px;
+    float:left;
+}
+.newTitle{
+    height: 24px;
+    font-weight: bolder;
+    font-size: 18px;
+    line-height: 24px;
+}
+.comment-content{
+    height: 50px;
+}
+.comment-time{
+    width: 170px;
+    display: inline-block;
+    float:right;
+    height: 28px;
+    margin-right: 20px;
+}

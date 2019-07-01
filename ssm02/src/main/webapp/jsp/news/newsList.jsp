@@ -157,7 +157,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <%--详情--%>
+            <%--点击详情按钮的隐藏显示--%>
             <script>
                 $(document).ready(function(){
                     for(var i=0;i<=$(".oTr").length;i++) {
@@ -191,13 +191,13 @@
                 </div>
                 <div class="layui-col-md4 layui-col-md-offset4">
                     <ul class="pagination">
-                        <li><c:if test="${page.isFirstPage==true}"><a>首页</a></c:if></li>
+                        <%--<li><c:if test="${page.isFirstPage==true}"><a>首页</a></c:if></li>--%>
                         <li><c:if test="${page.isFirstPage==false}"><a href="${ctx}/news/queryAll?startPage=${page.firstPage}">首页</a></c:if></li>
                         <li><c:if test="${page.hasPreviousPage==true}"><a href="${ctx}/news/queryAll?startPage=${page.prePage}">上一页</a></c:if></li>
-                        <li><c:if test="${page.hasPreviousPage==false}"><a>上一页</a></c:if></li>
+                        <%--<li><c:if test="${page.hasPreviousPage==false}"><a>上一页</a></c:if></li>--%>
                         <li><c:if test="${page.hasNextPage==true}"><a href="${ctx}/news/queryAll?startPage=${page.nextPage}">下一页</a></c:if></li>
-                        <li><c:if test="${page.hasNextPage==false}"><a>下一页</a></c:if></li>
-                        <li><c:if test="${page.isLastPage==true}"><a>末页</a></c:if></li>
+                        <%--<li><c:if test="${page.hasNextPage==false}"><a>下一页</a></c:if></li>--%>
+                        <%--<li><c:if test="${page.isLastPage==true}"><a>末页</a></c:if></li>--%>
                         <li><c:if test="${page.isLastPage==false}"><a href="${ctx}/news/queryAll?startPage=${page.lastPage}">末页</a></c:if></li>
                     </ul>
                 </div>
@@ -207,7 +207,7 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        &copy;duli.com - 信工学院软工1班
+        &copy; 2019 duli.com- 信工学院软工1班
     </div>
 </div>
 <script src="${ctx}/static/plugins/layui/layui.js"></script>

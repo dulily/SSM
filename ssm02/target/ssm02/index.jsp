@@ -29,7 +29,7 @@
                     type:'post',
                     success:function(data){
                         for (var i=0;i<data.length;i++){
-                            $("#lastUpdate").append('<li class="eachLi"><a href="" >♦ '+data[i].title+'</a></li>');
+                            $("#lastUpdate").append('<li class="eachLi"><a href="${ctx}/news/NewsInfo?id='+data[i].id+'" >♦ '+data[i].title+'</a></li>');
                         }
                     }
                 })
@@ -37,135 +37,87 @@
         </div>
         <div class="content-right">
             <div class="layui-carousel" id="test1">
-                <div carousel-item>
-                    <div><a href=""><img src="/uploadImg/new1.png" alt="" width="684px" height="280px"></a></div>
-                    <div><a href=""><img src="/uploadImg/new2.png" alt="" width="684px" height="280px"></a></div>
-                    <div><a href=""><img src="/uploadImg/new3.png" alt="" width="684px" height="280px"></a></div>
-                    <div><a href=""><img src="/uploadImg/new4.png" alt="" width="684px" height="280px"></a></div>
-                    <div><a href=""><img src="/uploadImg/new5.png" alt="" width="684px" height="280px"></a></div>
+                <%--轮播图--%>
+                <div carousel-item id="contentImg">
                 </div>
+                <script>
+                    $.ajax({
+                        url:'${ctx}/news/queryMilitary',
+                        type:'post',
+                        success:function(data){
+                            for (var i=0;i<data.length;i++){
+                                $("#contentImg").append('<div><a href="${ctx}/news/NewsInfo?id='+data[i].id+'"><img src="'+data[i].pictureUrl+'" width="741px" height="280px"></a></div>');
+                            }
+                        }
+                    })
+                </script>
 
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="content-left-two">
-            <h3 class="lastest">新闻列表 <span class="dec"> List News</span></h3>
-            <div class="content-box1">
-                <div class="content-box1-img">
-                    <img src="/uploadImg/14.jpg" alt="" width="94%" height="130px">
-                </div>
-                <div class="content-box1-text">
-                    <h3>标题标题标题标题标题标题</h3>
-                    <p class="content-box1-text-info">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    <p><span>2019-07-16</span><span class="click-count"><a href="">点击次数</a></span> <span class="click-count"><a
-                            href="" class="glyphicon glyphicon-thumbs-up"></a></span></p>
-                </div>
-            </div>
-            <%--<script>--%>
-                <%--$.ajax({--%>
-                    <%--url:'${ctx}/news/queryNewsAll',--%>
-                    <%--type:'post',--%>
-                    <%--success:function(data){--%>
-
-                    <%--}--%>
-                <%--})--%>
-            <%--</script>--%>
-
-
-            <div class="content-box1">
-                <div class="content-box1-img">
-                    <img src="/uploadImg/14.jpg" alt="" width="94%" height="130px">
-                </div>
-                <div class="content-box1-text">
-                    <h3>标题标题标题标题标题标题</h3>
-                    <p class="content-box1-text-p">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    <p><span>2019-07-16</span><span class="click-count"><a href="">点击次数</a></span> <span class="click-count"><a
-                            href="" class="glyphicon glyphicon-thumbs-up"></a></span></p>
-                </div>
-            </div>
-            <div class="content-box1">
-                <div class="content-box1-img">
-                    <img src="/uploadImg/14.jpg" alt="" width="94%" height="130px">
-                </div>
-                <div class="content-box1-text">
-                    <h3>标题标题标题标题标题标题</h3>
-                    <p class="content-box1-text-p">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    <p><span>2019-07-16</span><span class="click-count"><a href="">点击次数</a></span> <span class="click-count"><a
-                            href="" class="glyphicon glyphicon-thumbs-up"></a></span></p>
-                </div>
-            </div>
-            <div class="content-box1">
-                <div class="content-box1-img">
-                    <img src="/uploadImg/14.jpg" alt="" width="94%" height="130px">
-                </div>
-                <div class="content-box1-text">
-                    <h3>标题标题标题标题标题标题</h3>
-                    <p class="content-box1-text-p">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    <p><span>2019-07-16</span><span class="click-count"><a href="">点击次数</a></span> <span class="click-count"><a
-                            href="" class="glyphicon glyphicon-thumbs-up"></a></span></p>
-                </div>
-            </div>
-            <%--分页--%>
-            <div class="layui-row" style="text-align: center;">
-                <div class="layui-col-md4">
-                    <p style="height: 40px;line-height: 40px;">
-                        <span style="padding-right: 15px;">每页${page.pageSize}条</span>
-                        <span style="padding-right: 15px;">当前页${page.size}条</span>
-                        <span style="padding-right: 15px;">${page.pageNum}/${page.pages}页</span>
-                        <span>记录数${page.total}</span>
-                    </p>
-                </div>
-                <div class="layui-col-md4 layui-col-md-offset4">
-                    <ul class="pagination">
-                        <li><c:if test="${page.isFirstPage==true}"><a>首页</a></c:if></li>
-                        <li><c:if test="${page.isFirstPage==false}"><a href="">首页</a></c:if></li>
-                        <li><c:if test="${page.hasPreviousPage==true}"><a href="">上一页</a></c:if></li>
-                        <li><c:if test="${page.hasPreviousPage==false}"><a>上一页</a></c:if></li>
-                        <li><c:if test="${page.hasNextPage==true}"><a href="">下一页</a></c:if></li>
-                        <li><c:if test="${page.hasNextPage==false}"><a>下一页</a></c:if></li>
-                        <li><c:if test="${page.isLastPage==true}"><a>末页</a></c:if></li>
-                        <li><c:if test="${page.isLastPage==false}"><a href="">末页</a></c:if></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="content-left-two" id="contentText">
+            <h3 class="lastest">国内新闻 <span class="dec"> List News</span></h3>
         </div>
+        <script>
+            $.ajax({
+                url:'${ctx}/news/queryOwnNews',
+                type:'post',
+                success:function(data){
+                    for (var i=0;i<data.length;i++){
+                        $("#contentText").append('<div class="content-box1-img">' +
+                            '<img src="'+data[i].pictureUrl+'" alt="" width="94%" height="130px"></div>' +
+                            '<div class="content-box1-text"><h4><a href="${ctx}/news/NewsInfo?id='+data[i].id+'">'+data[i].title+'</a></h4>' +
+                            '<p class="content-box1-text-info">'+data[i].content+'</p>' +
+                            '<p><span>'+data[i].createtime+'</span></p>');
+                    }
+                }
+            })
+        </script>
+
         <div class="content-right-two">
             <div class="content-right-two-box1">
-                <h4 class="click-rank">点击排行</h4>
+                <h4 class="click-rank">娱乐新闻</h4>
                 <div class="content-right-two-text">
-                    <ul>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
-                        <li><a href="">点击排行</a></li>
+                    <ul id="rank">
                     </ul>
+                    <script>
+                        $.ajax({
+                            url:'${ctx}/news/queryYule',
+                            type:'post',
+                            success:function(data){
+                                for (var i=0;i<data.length;i++){
+                                    $("#rank").append('<li><a href="${ctx}/news/NewsInfo?id='+data[i].id+'' +
+                                        '" ><span style="font-size:20px;">'+(i+1)+'</span> '+data[i].title+'</a></li>');
+                                }
+                            }
+                        })
+                    </script>
                 </div>
             </div>
             <div class="content-right-two-box1">
                 <h4 class="click-rank">国际新闻</h4>
                 <div class="content-right-two-news">
                     <ul id="internation">
-                        <script>
-                            $.ajax({
-                                url:'${ctx}/news//queryCategoryName',
-                                type:'post',
-                                success:function(data){
-                                    for (var i=0;i<data.length;i++){
-                                        $("#internation").append('<li><a href="" >♦ '+data[i].title+'</a></li>');
-                                    }
-                                }
-                            })
-                        </script>
                     </ul>
+                    <script>
+                        $.ajax({
+                            url:'${ctx}/news//queryCategoryName',
+                            type:'post',
+                            success:function(data){
+                                for (var i=0;i<data.length;i++){
+                                    $("#internation").append('<li><a href="${ctx}/news/NewsInfo?id='+data[i].id+'" >■ '+data[i].title+'</a></li>');
+                                }
+                            }
+                        })
+                    </script>
                 </div>
             </div>
         </div>
     </div>
-
+<div class="content-foot">
+    <span>&copy; 2019 duli.com - 信息科学与工程学院软件工程1班</span>
+</div>
 <script src="${ctx}/static/plugins/layui/layui.js"></script>
 <script>
     //JavaScript代码区域

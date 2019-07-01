@@ -50,4 +50,56 @@
         <property name="maxUploadSizePerFile" value="2000000000"/>
     </bean>
 
+
+    <!--拦截器的配置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--会话拦截器
+            只想拦截/user/**/*-->
+            <mvc:mapping path="/user/**/*"/>
+            <!--排除的URI-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/logOut"/>
+            <mvc:exclude-mapping path="/user//registUsername"/>
+            <mvc:exclude-mapping path="/user/insertOne"/>
+            <mvc:exclude-mapping path="/user/queryAll"/>
+            <mvc:exclude-mapping path="/user//queryLike/username"/>
+            <mvc:exclude-mapping path="/user/deleteById"/>
+            <bean class="cn.duli.interceptors.UserInterceptor">
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--会话拦截器
+            只想拦截/news/**/*-->
+            <mvc:mapping path="/news/**/*"/>
+            <!--排除的URI-->
+            <mvc:exclude-mapping path="/news/queryLimit"/>
+            <mvc:exclude-mapping path="/news/queryCategoryName"/>
+            <mvc:exclude-mapping path="/news/queryYule"/>
+            <mvc:exclude-mapping path="/news/queryOwnNews"/>
+            <mvc:exclude-mapping path="/news/NewsInfo"/>
+            <mvc:exclude-mapping path="/news/queryMilitary"/>
+            <mvc:exclude-mapping path="/news/queryCategoryById"/>
+            <mvc:exclude-mapping path="/news/queryCategoryid"/>
+            <bean class="cn.duli.interceptors.RunInterceptor">
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--会话拦截器
+            只想拦截/category/**/*-->
+            <mvc:mapping path="/category/**/*"/>
+            <!--排除的URI-->
+            <mvc:exclude-mapping path="/category/queryName"/>
+            <bean class="cn.duli.interceptors.RunInterceptor">
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--会话拦截器
+            只想拦截/run/**/*-->
+            <mvc:mapping path="/run/**/*"/>
+            <mvc:exclude-mapping path="/run/logOut"/>
+            <bean class="cn.duli.interceptors.RunInterceptor">
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

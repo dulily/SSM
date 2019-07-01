@@ -25,21 +25,17 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a href="javascript:;" class="layui-icon layui-icon-dialogue"> 评论管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">评论添加</a></dd>
-                    <dd><a href="javascript:;">评论列表</a></dd>
-                    <dd><a href="">超链接</a></dd>
+                    <dd><a href="${ctx}/comment/selectComments">评论列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;" class="layui-icon layui-icon-user"> 用户管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/user/queryAll">用户列表</a></dd>
-                    <dd><a href="javascript:;">查看个人信息</a></dd>
-                    <dd><a href="javascript:;">列表三</a></dd>
-                    <dd><a href="">超链接</a></dd>
+                    <dd><a href="${ctx}/run/selectRunInfo?username=${sessionScope.runSession.username}">查看个人信息</a></dd>
+                    <dd><a href="${ctx}/jsp/run/rePassword.jsp">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">云市场</a></li>
         </ul>
     </div>
 </div>

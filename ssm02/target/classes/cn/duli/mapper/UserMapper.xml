@@ -1,24 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.duli.mapper.UserMapper" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.duli.mapper.UserMapper">
 
-  <select id="login" resultType="cn.duli.pojo.User">
-  select * from user
-  <where>
-    <if test="username != null and username !=''">
-      and username = #{username}
-    </if>
-    <if test="password != null and password != ''">
-      and password = #{password}
-    </if>
-  </where>
-  </select>
-
-  <select id="queryAll" resultType="cn.duli.pojo.User">
+  <select id="queryAll" resultType="User">
     select * from user
   </select>
 
-  <select id="queryLike" resultType="cn.duli.pojo.User">
+  <select id="queryLike" resultType="User">
     select * from USER
     <where>
       <if test="username != null and username != ''">
@@ -27,7 +15,66 @@
     </where>
   </select>
 
-  <delete id="deleteById" parameterType="int">
+  <delete id="deleteById">
     delete from user where id = #{id}
   </delete>
+
+
+
+
+  <select id="selectUserByUsername" resultType="User">
+    SELECT *
+    from user
+    where username = #{username}
+  </select>
+
+  <select id="insertOne" resultType="User">
+    insert into user (username,password,email,regist_time,last_login_time)
+    VALUES
+    (#{username},#{password},#{email},#{registTime},#{lastLoginTime})
+  </select>
+
+  <select id="login" resultType="User">
+    select * from user
+    where
+        username = #{username}
+        and password = #{password}
+  </select>
+
+
+  <select id="selectByUsername" resultType="User">
+    select * from user where username = #{username}
+  </select>
+
+  <select id="updateUser" resultType="User">
+    update user
+    <set>
+        email=#{email},
+        nickname=#{nickname},
+        gender=#{gender},
+      <if test="picture!=null and picture!=''">
+        picture=#{picture},
+      </if>
+        phone=#{phone}
+    </set>
+    <where>
+      id=#{id}
+    </where>
+  </select>
+
+    <select id="updateLastLoginTime" resultType="User">
+        update user set last_login_time=#{lastLoginTime}
+        where username=#{username}
+        and password=#{password}
+    </select>
+
+  <select id="selectByPwd" resultType="User">
+    select password from user
+    where username=#{username}
+  </select>
+
+    <select id="updatePwd" resultType="User">
+        update user set password=#{password}
+        where username=#{username}
+    </select>
 </mapper>

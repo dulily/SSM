@@ -11,6 +11,7 @@
         <result property="author" column="author"/>
         <result property="categoryid" column="categoryid"/>
         <result property="username" column="username"/>
+        <!--property="category"对应pojo里面的属性名-->
         <association property="category" javaType="Category">
             <id property="id" column="cid"/>
             <result property="name" column="name"/>
@@ -112,7 +113,7 @@
         <where>
             t1.categoryid = t2.id
         </where>
-        order by t1.createtime desc limit 7
+        order by t1.createtime desc limit 0,7
     </select>
 
     <select id="queryCategoryName" resultMap="newsWithCategory">
@@ -122,7 +123,51 @@
         from news t1,category t2
         <where>
             t1.categoryid = t2.id
-            and t2.name="国际" limit 7
+            and t2.name="国际" limit 0,7
         </where>
+    </select>
+    
+    <select id="queryYule" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+            and t2.name="娱乐" limit 0,7
+        </where>
+    </select>
+
+    <select id="queryOwnNews" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+            and t2.name="国内" limit 0,4
+        </where>
+    </select>
+
+    <select id="queryMilitary" resultMap="newsWithCategory">
+        SELECT
+        t1.id as nid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+        t2.id as cid,t2.name
+        from news t1,category t2
+        <where>
+            t1.categoryid = t2.id
+            and t2.name="军事" limit 0,5
+        </where>
+    </select>
+
+    <select id="queryCategoryById" resultMap="newsWithCategory">
+    SELECT
+    t1.id as nid,t1.categoryid,t1.author,t1.content,t1.createtime,t1.picture_url,t1.title,t1.username,
+    t2.id as cid,t2.name
+    from news t1,category t2
+    <where>
+        t1.categoryid = t2.id
+        and t1.categoryid = #{categoryid}
+    </where>
     </select>
 </mapper>

@@ -13,7 +13,7 @@ public interface NewsService {
     List<News> queryAll();
 
     /**
-     * 根据id删除新闻
+     * 根据新闻id删除新闻
      * @param id
      */
     void deleteOne(Integer id);
@@ -65,8 +65,32 @@ public interface NewsService {
     List<News> queryLimit();
 
     /**
-     * 查询国际新闻
+     * 查询前7条国际新闻
      * @return
      */
     List<News> queryCategoryName();
+
+    /**
+     * 查询前7条点击排行
+     * @return
+     */
+    List<News> queryYule();
+
+    /**
+     * 查询前7条国内新闻
+     * @return
+     */
+    List<News> queryOwnNews();
+
+    /**
+     * 查询前5条军事新闻
+     * @return
+     */
+    List<News> queryMilitary();
+
+    /**
+     * 查询某个类别下的新闻
+     * @return
+     */
+    List<News> queryCategoryById(Integer categoryid);
 }

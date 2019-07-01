@@ -23,7 +23,7 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        &copy;duli.com - 信工学院软工1班
+        &copy; 2019 duli.com - 信工学院软工1班
     </div>
 </div>
 <script src="${ctx}/static/plugins/layui/layui.js"></script>

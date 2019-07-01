@@ -61,5 +61,25 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.queryCategoryName();
     }
 
+    @Override
+    public List<News> queryYule() {
+        return newsMapper.queryYule();
+    }
+
+    @Override
+    public List<News> queryOwnNews() {
+        return newsMapper.queryOwnNews();
+    }
+
+    @Override
+    public List<News> queryMilitary() {
+        return newsMapper.queryMilitary();
+    }
+
+    @Override
+    public List<News> queryCategoryById(Integer categoryid) {
+        return newsMapper.queryCategoryById(categoryid);
+    }
+
 
 }

@@ -35,6 +35,8 @@ public class NewsController {
     /**
      * 后台部分
      */
+
+    //分页显示所有新闻列表
     @RequestMapping("/queryAll")
     public String queryAll(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model){
         //分页查询
@@ -46,7 +48,7 @@ public class NewsController {
         return "/news/newsList";
     }
 
-
+    //根据新闻id删除新闻
     @RequestMapping("/deleteOne")
     public String deleteOne(@RequestParam("id") Integer id){
         newsService.deleteOne(id);
@@ -54,6 +56,7 @@ public class NewsController {
         return "redirect:/news/queryAll";
     }
 
+    //按新闻标题模糊查询
     @RequestMapping("/queryLikeByTitle/title")
     public String queryLikeByTitle(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model,@RequestParam("title") String title){
         //分页查询
@@ -67,6 +70,7 @@ public class NewsController {
 
     }
 
+    //发布新闻时，类别回显
     @RequestMapping("/category")
     public String queryCategory(Model model){
         System.out.println("正在查询类别....");
@@ -77,7 +81,7 @@ public class NewsController {
     }
 
 
-    //入参就可以代表上传的文件
+    //发布新闻
     @RequestMapping("/insertOne")
     public String insertOne(@RequestParam("img") MultipartFile multipartFile, HttpServletRequest request, News news) {
 
@@ -93,7 +97,7 @@ public class NewsController {
         return "redirect:/news/queryAll";
     }
 
-    //更改新闻之前，根据新闻id回显新闻内容
+    //更改新闻时，根据新闻id回显新闻内容
     @RequestMapping("/selectById")
     public String selectById(Model model,@RequestParam Integer id){
         News news = newsService.selectById(id);
@@ -102,7 +106,7 @@ public class NewsController {
         return "/news/updateNews";
     }
 
-    //更改新闻之前，获取新闻类别，让数据回显
+    //更改新闻时，获取新闻类别，让数据回显
     @RequestMapping("/updateCategory")
     @ResponseBody
     public List<Category> updateCategory(){
@@ -111,6 +115,7 @@ public class NewsController {
         return categories;
     }
 
+    //更新新闻信息
     @RequestMapping("/updateOne")
     public String updateOne(@RequestParam("img") MultipartFile multipartFile, HttpServletRequest request, News news){
         if (multipartFile.getOriginalFilename()!= ""){
@@ -127,6 +132,7 @@ public class NewsController {
         return "redirect:/news/queryAll";
     }
 
+    //批量删除新闻
     @RequestMapping(value="/batchDelete", produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String batchDelete(String name){
@@ -142,6 +148,8 @@ public class NewsController {
     /**
      * 前台部分
      */
+
+    //查询最新发布的前7条新闻
     @RequestMapping("/queryLimit")
     @ResponseBody
     public List<News> queryLimit(){
@@ -150,17 +158,7 @@ public class NewsController {
         return list;
     }
 
-//    @RequestMapping("/queryNewsAll")
-//    @ResponseBody
-//    public List<News> queryNewsAll(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model){
-//        //分页查询
-//        PageHelper.startPage(startPage,4);
-//        List<News> news = newsService.queryAll();
-//        PageInfo<News> pi = new PageInfo<News>(news);
-//        model.addAttribute("page",pi);
-//        return news;
-//    }
-
+    //查询前7条国际新闻
     @RequestMapping("/queryCategoryName")
     @ResponseBody
     public List<News> queryCategoryName(){
@@ -168,5 +166,67 @@ public class NewsController {
         System.out.println("正在查询类别为国际的新闻...");
         return list;
     }
+
+    //查询前7条娱乐新闻
+    @RequestMapping("/queryYule")
+    @ResponseBody
+    public List<News> queryClickNum(){
+        List<News> list = newsService.queryYule();
+        System.out.println("正在查询查询前7条娱乐新闻...");
+        return list;
+    }
+
+    //查询前4条国内新闻
+    @RequestMapping("/queryOwnNews")
+    @ResponseBody
+    public List<News> queryOwnNews(){
+        List<News> list = newsService.queryOwnNews();
+        System.out.println("正在查询国内新闻前4的新闻...");
+        return list;
+    }
+
+    //根据新闻id回显新闻详情
+    @RequestMapping("/NewsInfo")
+    public String NewsInfo(Model model,@RequestParam Integer id){
+        News news = newsService.selectById(id);
+        System.out.println("正在查询新闻详情");
+        model.addAttribute("info",news);
+        return "/front/newsDetail";
+    }
+
+    //查询前5条军事新闻
+    @RequestMapping("/queryMilitary")
+    @ResponseBody
+    public List<News> queryMilitary(){
+        List<News> list = newsService.queryMilitary();
+        System.out.println("正在查询军事新闻前5条记录....");
+        return list;
+    }
+
+    /**
+     * 导航部分
+     */
+    //根据类别id查询此类别下的新闻
+    @RequestMapping("/queryCategoryById")
+    public String queryCategoryById(@RequestParam(required = false, defaultValue = "1") Integer startPage, Model model,@RequestParam Integer categoryid){
+        //分页查询
+        PageHelper.startPage(startPage,4);
+        List<News> news = newsService.queryCategoryById(categoryid);
+        System.out.println(categoryid);
+        System.out.println("正在查询新闻类别详情");
+        model.addAttribute("info",news);
+        PageInfo<News> pi = new PageInfo<News>(news);
+        model.addAttribute("page",pi);
+        return "/front/categoryDetail";
+    }
+
+    @RequestMapping("/queryCategoryid")
+    @ResponseBody
+    public List<News> queryCategoryid(){
+        List<News> list = newsService.queryAll();
+        System.out.println("所有................");
+        return list;
+    }
+
 }
 

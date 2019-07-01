@@ -1,5 +1,6 @@
 package cn.duli.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -19,9 +20,10 @@ public class News {
 
     private String pictureUrl;
 
-//    //解决日期格式传递问题
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //解决后台时间传到前台格式转换问题
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createtime;
+
 
     private Category category;
 
@@ -114,7 +116,6 @@ public class News {
     public void setCategory(Category category) {
         this.category = category;
     }
-
 
     @Override
     public String toString() {
